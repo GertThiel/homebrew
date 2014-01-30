@@ -8,7 +8,7 @@ class Enchant < Formula
   depends_on 'pkg-config' => :build
   depends_on :python => :recommended
   depends_on 'glib'
-  depends_on 'aspell'
+  depends_on 'hunspell'
 
   # http://pythonhosted.org/pyenchant/
   resource 'pyenchant' do
@@ -19,8 +19,8 @@ class Enchant < Formula
   def install
     system "./configure", "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
-                          "--disable-ispell",
-                          "--disable-myspell"
+                          "--disable-aspell",
+                          "--disable-ispell"
     system "make", "install"
 
     if build.with? 'python'
